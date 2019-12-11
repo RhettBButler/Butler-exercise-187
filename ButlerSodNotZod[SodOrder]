@@ -1,0 +1,170 @@
+package edu.cpt187.Butler.ParticipationExercise7;
+
+//AUTHOR: Rhett Brooks Butler
+//COURSE: CPT187
+//PURPOSE: To design a sod buying program with multiple supportive classes
+//STARTDATE: December 4th, 2019
+//FILENAME: SodNotZod
+
+public class SodOrder 
+{
+	private final static double ZERO_TOTAL = 0.0;
+	private final static double TAX_RATE = 0.075;
+	
+	private static int itemCounts[];
+	private static int discountCounts[]; 
+	private static int prizeCounts[]; 
+	private static int howMany = 0;
+	private static int lastItemSelectedIndex = 0;
+	
+	private static char discountType = ' ';
+	
+	private static String itemName = " ";
+	private static String discountName = " ";
+	private static String prizeName = " ";
+	
+	private static double itemPrice = 0.0;
+	private static double discountRate = 0.0;
+	
+
+	public SodOrder()
+	{
+	
+	}
+	
+	public void setItemCountArray(int borrowedRecordCount)
+	{
+		itemCounts = new int[borrowedRecordCount];
+	}
+	
+	public void setItemSelection(int borrowedSearchIndex)
+	{
+		lastItemSelectedIndex = borrowedSearchIndex;
+	}
+	
+	public void setItemName(String[] borrowedItemNames)
+	{
+		itemName = borrowedItemNames[lastItemSelectedIndex];
+	}
+	
+	public void setItemPrice(double[] borrowedItemPrices)
+	{
+		itemPrice = borrowedItemPrices[lastItemSelectedIndex];
+	}
+	
+	public  void setHowMany(int borrowedHowMany)
+	{
+		howMany = borrowedHowMany;
+	}
+	
+	public void setDiscountType(char borrowedMenuSelection)
+	{
+		discountType = borrowedMenuSelection;
+	}
+	
+	public void setDiscountName(String[] borrowedDiscountNames)
+	{
+		discountName = borrowedDiscountNames[lastItemSelectedIndex];
+	}
+	
+	public void setDiscountRate(double[] borrowedDiscountRate)
+	{
+		discountRate = borrowedDiscountRate[lastItemSelectedIndex];
+	}
+	
+	public void setPrizeName(String[] borrowedPrizeNames, int borrowedPrizeIndex)
+	{
+		prizeName = borrowedPrizeNames[borrowedPrizeIndex];
+	}
+	
+	public void setDecreaseInStock(Inventory currentInventory)
+	{
+		Inventory.setReduceStock(currentInventory);
+	}
+	
+	public int getInStockCount(int[] borrowedInStockCounts)
+	{
+		return borrowedInStockCounts[lastItemSelectedIndex];
+	}
+	
+	public static int getItemID()
+	{
+		return lastItemSelectedIndex;
+	}
+	
+	public static String getItemName()
+	{
+		return itemName;
+	}
+	
+	public static double getItemPrice()
+	{
+		return itemPrice;
+	}
+	
+	public int[] getItemCounts()
+	{
+		return itemCounts;
+	}
+	
+	public static int getHowMany()
+	{
+		return howMany;
+	}
+	
+	public String getDiscountName()
+	{
+		return discountName;
+	}
+	
+	public double getDiscountRate()
+	{
+		return discountRate;
+	}
+	
+	public int[] getDiscountCounts()
+	{
+		return discountCounts;
+	}
+
+	public static double getDiscountAmount()
+	{
+		return itemPrice * discountRate;
+	}
+	
+	public static double getDiscountPrice()
+	{
+		return itemPrice - getDiscountAmount();
+	}
+	
+	public String getPrizeName()
+	{
+		return prizeName;
+	}
+	
+	public static int[] getPrizeCounts()
+	{
+		return prizeCounts;
+	}
+	
+	public static  double getSubTotal()
+	{
+		return getDiscountPrice() * howMany;
+	}
+	
+	public static double getTaxRate()
+	{
+		return TAX_RATE;
+	}
+	
+	public static double getTaxAmt()
+	{
+		return getSubTotal() * getTaxRate();
+	}
+	
+	public static double getTotalCost()
+	{
+		return getSubTotal() + getTaxAmt();
+	}
+	
+}
