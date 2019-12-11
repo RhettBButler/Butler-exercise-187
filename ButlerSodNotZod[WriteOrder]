@@ -1,0 +1,52 @@
+package edu.cpt187.Butler.ParticipationExercise7;
+
+//AUTHOR: Rhett Brooks Butler
+//COURSE: CPT187
+//PURPOSE: To design a sod buying program with multiple supportive classes
+//STARTDATE: December 4th, 2019
+//FILENAME: SodNotZod
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+
+public class WriteOrder 
+{
+	private final int NOT_FOUND = -1;
+	private final int RESET_VALUE = 0;
+	
+	private static String masterFileName = "";
+	private int recordCount = 0;
+	
+	public WriteOrder(String borrowedFileName)
+	{
+		
+	}
+	
+	public void setWriteOrder(int borrowedItemID, String borrowedItemName, double borrowedItemPrice, int borrowedQuantity, double borrowedOrderCost)
+	{
+		try
+		{  
+			PrintWriter filePW = new PrintWriter (new FileWriter(masterFileName, true));
+			filePW.printf ("%s\t%s\t%.2f\n" , "lastName, firstName, salary");
+			filePW.close();
+		}
+		catch (IOException ex) 
+		{
+			
+		}
+	}
+	
+	public static String getFileName()
+	{
+		return masterFileName;
+	}
+	
+	public int getRecordCount()
+	{
+		return recordCount;
+	}
+	
+	
+}
